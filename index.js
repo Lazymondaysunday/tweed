@@ -53,23 +53,6 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('message', message => {
   if (!channels.includes(message.channel.id)) return
-  if (message.content === '!ping') {
-		// send back "Pong." to the channel the message was sent in
-    const exampleEmbed = new Discord.MessageEmbed()
-      .setColor("#0099ff")
-      .setAuthor(
-        "FOX Token",
-        "https://assets.coincap.io/assets/icons/fox@2x.png",
-        "https://coincap.io/assets/fox-token"
-      )
-      .addFields(
-        { name: "Price", value: "$0.70", inline: true },
-        { name: "Change", value: "-8.00% 📈", inline: true, setColor: '#0099ff' },
-      )
-      .setTimestamp()
-      .setFooter("CoinCap", "https://iconape.com/wp-content/png_logo_vector/coincap.png");
-		message.channel.send(exampleEmbed);
-	}
   if (message.content === '!proposals') {
     const resp = axios.get('https://api.boardroom.info/v1/protocols/shapeshift/proposals?limit=50').then(resp => {
       const data = resp.data.data
