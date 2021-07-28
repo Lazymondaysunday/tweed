@@ -7,8 +7,8 @@ const { Propsal } = require('./proposal')
 
 const channels = JSON.parse(process.env.DISCORD_CHANNEL)
 
-client.once('ready', () => {
-	console.log('Ready!');
+client.on('ready', () => {
+  client.user.setActivity('https://git.io/d.js-heroku', {type: 'WATCHING'});
 });
 
 /**
@@ -49,8 +49,6 @@ function truncateWords(sentence, amount, tail) {
   return `${truncated.join(' ')}${tail}`;
 }
 
-client.login(process.env.BOT_TOKEN);
-
 client.on('message', message => {
   if (!channels.includes(message.channel.id)) return
   if (message.content === '!proposals') {
@@ -85,3 +83,5 @@ client.on('message', message => {
     })
   }
 });
+
+client.login(process.env.BOT_TOKEN);
