@@ -50,7 +50,29 @@ function truncateWords(sentence, amount, tail) {
 }
 
 client.on('message', message => {
-  if (!channels.includes(message.channel.id)) return
+  //if (!channels.includes(message.channel.id)) return
+  if (message.content === '!airdrop') {
+    const exampleEmbed = {
+      color: 0x0099ff,
+      title: 'Airdrop Resources',
+      url: 'https://shapeshift.com/shapeshift-decentralize-airdrop',
+      description: 'Collection of helpful links for the ShapeShift DAO Airdrop.',
+      fields: [
+        {
+          name: 'Links',
+          value: '[1) How to Claim ⭢](https://shapeshift.zendesk.com/hc/en-us/articles/4403645992077-FOX-Airdrop-How-it-Works)\n[2) How long to Claim? ⭢](https://shapeshift.zendesk.com/hc/en-us/articles/4405404486285-How-Long-do-I-Have-to-Claim-My-FOX-)\n[3) Who is Eligible? ⭢](https://shapeshift.zendesk.com/hc/en-us/articles/4403645953037-Who-is-Eligible-to-Receive-Airdropped-FOX-)',
+          inline: true,
+        }
+      ],
+      image: {
+        url: 'https://assets.website-files.com/5cec55545d0f47cfe2a39a8e/60ee705019111828cd4ecf0e_ship-announcement-hero.jpg',
+      },
+    };
+    message.channel.send({ embed: exampleEmbed });
+  }
+  if (message.content === '!prop-template') {
+    message.channel.send('https://forum.shapeshift.com/t/shapeshift-proposal-template/54')
+  }
   if (message.content === '!proposals') {
     const resp = axios.get('https://api.boardroom.info/v1/protocols/shapeshift/proposals?limit=50').then(resp => {
       const data = resp.data.data
