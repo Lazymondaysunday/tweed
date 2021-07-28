@@ -8,7 +8,7 @@ const { Propsal } = require('./proposal')
 const channels = JSON.parse(process.env.DISCORD_CHANNEL)
 
 client.on('ready', () => {
-  client.user.setActivity('https://git.io/d.js-heroku', {type: 'WATCHING'});
+  client.user.setActivity('The Fox and the Hound', {type: 'WATCHING'});
 });
 
 /**
