@@ -8,6 +8,7 @@ const { Propsal } = require("./proposal");
 const channels = JSON.parse(process.env.DISCORD_CHANNEL);
 
 client.on("ready", () => {
+  console.info("running bot");
   client.user.setActivity("The Fox and the Hound", { type: "WATCHING" });
 });
 
@@ -61,9 +62,10 @@ client.on("message", (message) => {
       )
       .then((resp) => {
         const data = resp.data.data;
-        if (data.length === 0) {
+        const proposals = data.filter((item) => item.currentState === "active");
+        if (proposals.length === 0) {
           message.channel.send(
-            `${message.author.username}, you trigger-happy lunatic! There arent any proposals!`
+            `${message.author.username}, you trigger-happy lunatic! There arent any active proposals!`
           );
         }
         data.forEach((propData) => {
