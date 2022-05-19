@@ -61,6 +61,11 @@ client.on("message", (message) => {
       )
       .then((resp) => {
         const data = resp.data.data;
+        if (data.length === 0) {
+          message.channel.send(
+            `${message.author.username}, you trigger-happy lunatic! There arent any proposals!`
+          );
+        }
         data.forEach((propData) => {
           const {
             title,
