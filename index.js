@@ -58,7 +58,7 @@ client.on("message", (message) => {
   if (message.content === "!proposals") {
     const resp = axios
       .get(
-        `https://api.boardroom.info/v1/protocols/${process.env.DAO}/proposals?limit=50?key=${process.env.API_KEY}`
+        `https://api.boardroom.info/v1/protocols/${process.env.DAO}/proposals?limit=50&key=${process.env.API_KEY}`
       )
       .then((resp) => {
         const data = resp.data.data;
